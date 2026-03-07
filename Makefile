@@ -1,10 +1,8 @@
-# Makefile for kvstore
-
 CC      = gcc
 CFLAGS  = -Wall -Wextra -Wpedantic -std=c11 -O2
 
-TARGET  = kvstore
-SRC     = kvstore.c
+TARGET  = database_project
+SRC     = database_project.c
 
 .PHONY: all clean
 
