@@ -1,6 +1,4 @@
-# kvstore — Simple Persistent Key-Value Store
-
-A minimal key-value database written in C, built as part of the *Build Your Own Database* project.
+# database project for 4350
 
 ## Features
 
@@ -31,25 +29,6 @@ Requires GCC (or any C11-compatible compiler).
 | `GET <key>`          | Retrieve a value; prints `NULL` if absent |
 | `EXIT`               | Quit the program                         |
 
-## Example session
-
-```
-SET name Alice
-OK
-SET age 30
-OK
-GET name
-Alice
-GET missing
-NULL
-EXIT
-```
-
-Restart the program and the data is still there:
-
-```
-GET name
-Alice
 ```
 
 ## Design notes
@@ -57,11 +36,3 @@ Alice
 - **Storage format**: each `SET` appends a line `SET <key> <value>\n` to `data.db`.
 - **Index**: a `malloc`/`realloc`-managed array of `{key, value}` string pairs, scanned linearly. Capacity doubles on overflow.
 - **No stdlib maps**: `Index` is implemented from scratch in ~60 lines of C.
-
-## File layout
-
-```
-kvstore.c   — all source code
-Makefile    — build rules
-data.db     — append-only log (created at runtime)
-```
